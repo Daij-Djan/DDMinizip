@@ -49,7 +49,7 @@
 		NSDate* fileDate = (NSDate*)[attr objectForKey:NSFileModificationDate];
 		if( fileDate )
 		{
-			zipInfo.dosDate = [fileDate timeIntervalSinceDate:[self Date1980] ];
+			zipInfo.dosDate = [fileDate timeIntervalSinceDate:[[self class] Date1980] ];
 		}
 	}
 	
@@ -88,7 +88,7 @@
 }
 
 #pragma mark get NSDate object for 1980-01-01
--(NSDate*) Date1980
++(NSDate*) Date1980
 {
 	NSDateComponents *comps = [[NSDateComponents alloc] init];
 	[comps setDay:1];

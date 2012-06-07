@@ -43,8 +43,9 @@
 	return _unzFile!=NULL;
 }
 
--(BOOL) UnzipFileTo:(NSString*) path overwriteAlways:(BOOL) overwrite flattenStructure:(BOOL) flatten 
+-(NSInteger) UnzipFileTo:(NSString*) path overwriteAlways:(BOOL) overwrite flattenStructure:(BOOL) flatten 
 {
+    NSInteger cFiles = 0;
 	BOOL success = YES;
 	int ret = unzGoToFirstFile( _unzFile );
 	unsigned char		buffer[4096] = {0};
@@ -108,7 +109,7 @@
 			[fman createDirectoryAtPath:[fullPath stringByDeletingLastPathComponent] withIntermediateDirectories:YES attributes:nil error:nil];
 		if( [fman fileExistsAtPath:fullPath] && !isDirectory && !overwrite )
 		{
-			if( ![self shouldOverwrite:fullPath] )
+			if( ![self shouldOverwrite:fullPath withFileInfo:fileInfo] )
 			{
 				unzCloseCurrentFile( _unzFile );
 				ret = unzGoToNextFile( _unzFile );
@@ -137,9 +138,8 @@
 			// set the orignal datetime property
 			if( fileInfo.dosDate!=0 )
 			{
-				NSDate* orgDate = [[NSDate alloc] 
-								   initWithTimeInterval:(NSTimeInterval)fileInfo.dosDate 
-								   sinceDate:[self Date1980] ];
+				NSDate* orgDate = [[NSDate alloc] initWithTimeInterval:(NSTimeInterval)fileInfo.dosDate 
+								   sinceDate:[[self class] Date1980]];
 
 				NSDictionary* attr = [NSDictionary dictionaryWithObject:orgDate forKey:NSFileModificationDate]; //[[NSFileManager defaultManager] fileAttributesAtPath:fullPath traverseLink:YES];
 				if( attr )
@@ -155,12 +155,14 @@
 //				[orgDate release];
 				orgDate = nil;
 			}
+            
+            cFiles++;
 			
 		}
 		unzCloseCurrentFile( _unzFile );
 		ret = unzGoToNextFile( _unzFile );
 	}while( ret==UNZ_OK && UNZ_OK!=UNZ_END_OF_LIST_OF_FILE );
-	return success;
+	return success ? cFiles : -1;
 }
 
 -(BOOL) closeZipFile
@@ -187,15 +189,15 @@
 		[_delegate zipArchive:self errorMessage:msg];
 }
 
--(BOOL) shouldOverwrite:(NSString*) file
+-(BOOL) shouldOverwrite:(NSString*)file withFileInfo:(unz_file_info)fileInfo
 {
-	if( _delegate && [_delegate respondsToSelector:@selector(zipArchive:shouldOverwriteFile:)] )
-		return [_delegate zipArchive:self shouldOverwriteFile:file];
+	if( _delegate && [_delegate respondsToSelector:@selector(zipArchive:shouldOverwriteFile:withZippedFile:)] )
+		return [_delegate zipArchive:self shouldOverwriteFile:file withZippedFile:fileInfo];
 	return YES;
 }
 
 #pragma mark get NSDate object for 1980-01-01
--(NSDate*) Date1980
++(NSDate*) Date1980
 {
 	NSDateComponents *comps = [[NSDateComponents alloc] init];
 	[comps setDay:1];

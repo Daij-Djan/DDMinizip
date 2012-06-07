@@ -12,7 +12,7 @@
 @optional
 -(BOOL) zipArchive:(DDZipReader*)zip shouldExtractFile:(NSString*)file;
 -(void) zipArchive:(DDZipReader*)zip errorMessage:(NSString*) msg;
--(BOOL) zipArchive:(DDZipReader*)zip shouldOverwriteFile:(NSString*)file;
+-(BOOL) zipArchive:(DDZipReader*)zip shouldOverwriteFile:(NSString*)file withZippedFile:(unz_file_info)fileInfo;
 
 @end
 
@@ -24,6 +24,8 @@
 @property (nonatomic, unsafe_unretained) id<DDZipReaderDelegate> delegate;
 
 -(BOOL) openZipFile:(NSString*) zipFile;
--(BOOL) UnzipFileTo:(NSString*) path overwriteAlways:(BOOL) overwrite flattenStructure: (BOOL)flatten;
+-(NSInteger) UnzipFileTo:(NSString*) path overwriteAlways:(BOOL) overwrite flattenStructure: (BOOL)flatten;
 -(BOOL) closeZipFile;
+
++ (NSDate*)Date1980;
 @end
