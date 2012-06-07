@@ -5,6 +5,7 @@
 
 #import <Foundation/Foundation.h>
 #include "unzip.h"
+#import "DDZippedFileInfo.h"
 
 @class DDZipReader;
 
@@ -12,7 +13,7 @@
 @optional
 -(BOOL) zipArchive:(DDZipReader*)zip shouldExtractFile:(NSString*)file;
 -(void) zipArchive:(DDZipReader*)zip errorMessage:(NSString*) msg;
--(BOOL) zipArchive:(DDZipReader*)zip shouldOverwriteFile:(NSString*)file withZippedFile:(unz_file_info)fileInfo;
+-(BOOL) zipArchive:(DDZipReader*)zip shouldOverwriteFile:(NSString*)file withZippedFile:(DDZippedFileInfo*)fileInfo;
 
 @end
 
@@ -24,8 +25,8 @@
 @property (nonatomic, unsafe_unretained) id<DDZipReaderDelegate> delegate;
 
 -(BOOL) openZipFile:(NSString*) zipFile;
--(NSInteger) UnzipFileTo:(NSString*) path overwriteAlways:(BOOL) overwrite flattenStructure: (BOOL)flatten;
+-(NSInteger) unzipFileTo:(NSString*) path
+        flattenStructure: (BOOL)flatten;
 -(BOOL) closeZipFile;
 
-+ (NSDate*)Date1980;
 @end

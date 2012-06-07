@@ -43,7 +43,7 @@
 	return _unzFile!=NULL;
 }
 
--(NSInteger) UnzipFileTo:(NSString*) path overwriteAlways:(BOOL) overwrite flattenStructure:(BOOL) flatten 
+-(NSInteger) unzipFileTo:(NSString *)path flattenStructure:(BOOL)flatten
 {
     NSInteger cFiles = 0;
 	BOOL success = YES;
@@ -77,45 +77,54 @@
 		char* filename = (char*) malloc( fileInfo.size_filename +1 );
 		unzGetCurrentFileInfo(_unzFile, &fileInfo, filename, fileInfo.size_filename + 1, NULL, 0, NULL, 0);
 		filename[fileInfo.size_filename] = '\0';
-		
-		// check if it contains directory
+
+		//get zipped path
 		NSString * strPath = [NSString  stringWithUTF8String:filename];
 		BOOL isDirectory = NO;
 		if(flatten) {
 			strPath = [strPath lastPathComponent];
 		}
 		else {
-			if( filename[fileInfo.size_filename-1]=='/' || filename[fileInfo.size_filename-1]=='\\')
+			if( filename[fileInfo.size_filename-1]=='/' || filename[fileInfo.size_filename-1]=='\\') {
 				isDirectory = YES;
+            }
 		}
-		
 		free( filename );
-		if( [strPath rangeOfCharacterFromSet:[NSCharacterSet characterSetWithCharactersInString:@"/\\"]].location!=NSNotFound )
-		{// contains a path
+        
+        //convert to /
+		if( [strPath rangeOfCharacterFromSet:[NSCharacterSet characterSetWithCharactersInString:@"/\\"]].location!=NSNotFound ) {
 			strPath = [strPath stringByReplacingOccurrencesOfString:@"\\" withString:@"/"];
 		}
-		NSString* fullPath = [path stringByAppendingPathComponent:strPath];
-		
-        if( ![self shouldExtractFile:fullPath] )
+        
+        //ask delegate if he wants to proceed
+        if( ![self shouldExtractFile:strPath] )
         {
             unzCloseCurrentFile( _unzFile );
             ret = unzGoToNextFile( _unzFile );
             continue;
         }
-        
+
+        //get full target path 
+		NSString* fullPath = [path stringByAppendingPathComponent:strPath];
+		
+        //create target dir
 		if( isDirectory )
 			[fman createDirectoryAtPath:fullPath withIntermediateDirectories:YES attributes:nil error:nil];
 		else
 			[fman createDirectoryAtPath:[fullPath stringByDeletingLastPathComponent] withIntermediateDirectories:YES attributes:nil error:nil];
-		if( [fman fileExistsAtPath:fullPath] && !isDirectory && !overwrite )
+        
+        //ask delegate for overwrite
+		if( [fman fileExistsAtPath:fullPath] && !isDirectory )
 		{
-			if( ![self shouldOverwrite:fullPath withFileInfo:fileInfo] )
+			if( ![self shouldOverwrite:fullPath withName:strPath andFileInfo:fileInfo] )
 			{
 				unzCloseCurrentFile( _unzFile );
 				ret = unzGoToNextFile( _unzFile );
 				continue;
 			}
 		}
+        
+        //write file
 		FILE* fp = fopen( (const char*)[fullPath UTF8String], "wb");
 		while( fp )
 		{
@@ -138,8 +147,7 @@
 			// set the orignal datetime property
 			if( fileInfo.dosDate!=0 )
 			{
-				NSDate* orgDate = [[NSDate alloc] initWithTimeInterval:(NSTimeInterval)fileInfo.dosDate 
-								   sinceDate:[[self class] Date1980]];
+				NSDate* orgDate = [DDZippedFileInfo dateWithTimeIntervalSince1980:(NSTimeInterval)fileInfo.dosDate];
 
 				NSDictionary* attr = [NSDictionary dictionaryWithObject:orgDate forKey:NSFileModificationDate]; //[[NSFileManager defaultManager] fileAttributesAtPath:fullPath traverseLink:YES];
 				if( attr )
@@ -189,27 +197,13 @@
 		[_delegate zipArchive:self errorMessage:msg];
 }
 
--(BOOL) shouldOverwrite:(NSString*)file withFileInfo:(unz_file_info)fileInfo
+-(BOOL) shouldOverwrite:(NSString*)file withName:(NSString*)name andFileInfo:(unz_file_info)fileInfo
 {
-	if( _delegate && [_delegate respondsToSelector:@selector(zipArchive:shouldOverwriteFile:withZippedFile:)] )
-		return [_delegate zipArchive:self shouldOverwriteFile:file withZippedFile:fileInfo];
-	return YES;
-}
-
-#pragma mark get NSDate object for 1980-01-01
-+(NSDate*) Date1980
-{
-	NSDateComponents *comps = [[NSDateComponents alloc] init];
-	[comps setDay:1];
-	[comps setMonth:1];
-	[comps setYear:1980];
-	NSCalendar *gregorian = [[NSCalendar alloc]
-							 initWithCalendarIdentifier:NSGregorianCalendar];
-	NSDate *date = [gregorian dateFromComponents:comps];
-	
-//	[comps release];
-//	[gregorian release];
-	return date;
+	if( _delegate && [_delegate respondsToSelector:@selector(zipArchive:shouldOverwriteFile:withZippedFile:)] ) {
+        DDZippedFileInfo *info = [[DDZippedFileInfo alloc] initWithName:name andNativeInfo:fileInfo];    
+		return [_delegate zipArchive:self shouldOverwriteFile:file withZippedFile:info];
+    }
+	return NO;
 }
 
 @end

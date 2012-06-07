@@ -16,5 +16,4 @@
              newname:(NSString*) newname;
 -(BOOL) closeZipFile;
 
-+ (NSDate*)Date1980;
 @end

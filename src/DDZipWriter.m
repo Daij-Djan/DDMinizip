@@ -6,6 +6,7 @@
 #import "DDZipWriter.h"
 #import "zlib.h"
 #import "zconf.h"
+#import "DDZippedFileInfo.h"
 
 @implementation DDZipWriter
 
@@ -49,7 +50,7 @@
 		NSDate* fileDate = (NSDate*)[attr objectForKey:NSFileModificationDate];
 		if( fileDate )
 		{
-			zipInfo.dosDate = [fileDate timeIntervalSinceDate:[[self class] Date1980] ];
+			zipInfo.dosDate = [fileDate timeIntervalSinceDate:[DDZippedFileInfo dateWithTimeIntervalSince1980:0]];
 		}
 	}
 	
@@ -87,17 +88,5 @@
 	return ret;
 }
 
-#pragma mark get NSDate object for 1980-01-01
-+(NSDate*) Date1980
-{
-	NSDateComponents *comps = [[NSDateComponents alloc] init];
-	[comps setDay:1];
-	[comps setMonth:1];
-	[comps setYear:1980];
-	NSCalendar *gregorian = [[NSCalendar alloc]
-							 initWithCalendarIdentifier:NSGregorianCalendar];
-	NSDate *date = [gregorian dateFromComponents:comps];
-    return date;
-}
 
 @end
