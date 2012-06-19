@@ -51,6 +51,7 @@
 		if( fileDate )
 		{
 			zipInfo.dosDate = [fileDate timeIntervalSinceDate:[DDZippedFileInfo dateWithTimeIntervalSince1980:0]];
+            zipInfo.tmz_date = [DDZippedFileInfo mzDateWithDate:fileDate];
 		}
 	}
 	
@@ -67,8 +68,8 @@
 		return NO;
 	}
 	NSData* data = [ NSData dataWithContentsOfFile:file];
-	unsigned int dataLen = [data length];
-	ret = zipWriteInFileInZip( _zipFile, (const void*)[data bytes], dataLen);
+	NSUInteger dataLen = [data length];
+	ret = zipWriteInFileInZip( _zipFile, (const void*)[data bytes], (unsigned int)dataLen);
 	if( ret!=Z_OK )
 	{
 		return NO;

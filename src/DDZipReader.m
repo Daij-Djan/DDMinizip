@@ -45,6 +45,8 @@
 
 -(NSInteger) unzipFileTo:(NSString *)path flattenStructure:(BOOL)flatten
 {
+    NSLog(@"unzip %@", path);
+    
     NSInteger cFiles = 0;
 	BOOL success = YES;
 	int ret = unzGoToFirstFile( _unzFile );
@@ -113,7 +115,11 @@
 		else
 			[fman createDirectoryAtPath:[fullPath stringByDeletingLastPathComponent] withIntermediateDirectories:YES attributes:nil error:nil];
         
-        //ask delegate for overwrite
+//        //test
+//        DDZippedFileInfo *info = [[DDZippedFileInfo alloc] initWithName:strPath andNativeInfo:fileInfo];
+//        NSLog(@"%@", info.date);
+        
+              //ask delegate for overwrite
 		if( [fman fileExistsAtPath:fullPath] && !isDirectory )
 		{
 			if( ![self shouldOverwrite:fullPath withName:strPath andFileInfo:fileInfo] )
@@ -147,7 +153,7 @@
 			// set the orignal datetime property
 			if( fileInfo.dosDate!=0 )
 			{
-				NSDate* orgDate = [DDZippedFileInfo dateWithTimeIntervalSince1980:(NSTimeInterval)fileInfo.dosDate];
+				NSDate* orgDate = [DDZippedFileInfo dateWithMUDate:fileInfo.tmu_date];
 
 				NSDictionary* attr = [NSDictionary dictionaryWithObject:orgDate forKey:NSFileModificationDate]; //[[NSFileManager defaultManager] fileAttributesAtPath:fullPath traverseLink:YES];
 				if( attr )

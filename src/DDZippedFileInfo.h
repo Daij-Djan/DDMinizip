@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #include "unzip.h"
+#include  "zip.h"
 
 typedef enum {
 	DDZippedFileInfoCompressionLevelDefault= -1,
@@ -29,10 +30,12 @@ typedef enum {
 - (id) initWithName:(NSString*)aName andNativeInfo:(unz_file_info)info;
 
 /**
- * get NSDate object with timeinterval since 1980-01-01 (dos)
- * @param interval seconds since 1980
+ * get NSDate object with date specified by a tm_unz date structure
+ * @param mu_date the minzip's unzips C structure
  * @return the NSDate object
  */
++(NSDate*) dateWithMUDate:(tm_unz)mu_date;
++(tm_zip) mzDateWithDate:(NSDate*)date;
 +(NSDate*) dateWithTimeIntervalSince1980:(NSTimeInterval)interval;
 
 @end
