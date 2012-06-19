@@ -48,4 +48,4 @@ apart from that, below you find info on how to use the classes in your app as we
 	    return ([fileDate compare:fileInfoDate]==NSOrderedAscending);
 	}
 
-	
+#DDMinizip is available under the original libz license

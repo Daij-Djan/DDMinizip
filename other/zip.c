@@ -372,9 +372,9 @@ local int ziplocal_getShort (pzlib_filefunc_def,filestream,pX)
     voidpf filestream;
     uLong *pX;
 {
-    uLong x ;
-    int i;
-    int err;
+    uLong x = 0;
+    int i = 0;
+    int err = 0;
 
     err = ziplocal_getByte(pzlib_filefunc_def,filestream,&i);
     x = (uLong)i;
@@ -400,8 +400,8 @@ local int ziplocal_getLong (pzlib_filefunc_def,filestream,pX)
     voidpf filestream;
     uLong *pX;
 {
-    uLong x ;
-    int i;
+    uLong x = 0;
+    int i = 0;
     int err;
 
     err = ziplocal_getByte(pzlib_filefunc_def,filestream,&i);
