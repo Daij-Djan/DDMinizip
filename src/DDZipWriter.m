@@ -44,6 +44,9 @@
 	zip_fileinfo zipInfo = {0};
 	zipInfo.dosDate = (unsigned long) current;
 	
+    if(!newname)
+        newname = file;
+    
 	NSDictionary* attr = [[NSFileManager defaultManager] attributesOfItemAtPath:file error:nil];
 	if( attr )
 	{
