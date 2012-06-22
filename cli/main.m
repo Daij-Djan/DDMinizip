@@ -69,7 +69,33 @@ int writeZip(NSArray *files, NSString *zip)
 
 int main(int argc, const char * argv[])
 {
-    if(argc<2) 
+//    NSDate *d1980 = [DDZippedFileInfo dateWithTimeIntervalSince1980:0];
+//    //dos date and back
+//    NSTimeInterval d = [[NSDate date] timeIntervalSinceDate:d1980];
+//    NSLog(@"%@ = %@", [NSDate date], [DDZippedFileInfo dateWithTimeIntervalSince1980:d]);
+//
+//    //dos date and back
+//    tm_zip t1 = [DDZippedFileInfo mzDateWithDate:[NSDate date]];
+//    tm_unz t2;
+//    t2.tm_hour = t1.tm_hour;
+//    t2.tm_mday = t1.tm_mday;
+//    t2.tm_min = t1.tm_min;
+//    t2.tm_mon = t1.tm_mon;
+//    t2.tm_sec = t1.tm_sec;
+//    t2.tm_year = t1.tm_year;
+//    NSLog(@"%@ = %@", [NSDate date], [DDZippedFileInfo dateWithMUDate:t2]);
+//
+//    //via tmz->dos and back
+//    tm_zip z = [DDZippedFileInfo mzDateWithDate:[NSDate date]];
+//    long d2 = ziplocal_TmzDateToDosDate(&z, 0);
+//    NSLog(@"%@ = %@, %d", [NSDate date], [DDZippedFileInfo dateWithTimeIntervalSince1980:d2], (uLong)d==d2);
+//    
+//    //dos to unzip and back
+//    tm_unz u;
+//    unzlocal_DosDateToTmuDate(d, &u);
+//    NSLog(@"%@ = %@", [NSDate date], [DDZippedFileInfo dateWithMUDate:u]);
+//    
+    if(argc<2)
     {
         printf("Usage of minizip demo is: %s ZIPFILE or LISTFILES_TO_ZIP\n \
                if first arg is a zip it is unpacked into subdir '%%file%%-Unpack', else all is packed into '%%file%%-pack.zip' in dir of file 1", argv[0]);

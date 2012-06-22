@@ -55,6 +55,11 @@
 		{
 			zipInfo.dosDate = [fileDate timeIntervalSinceDate:[DDZippedFileInfo dateWithTimeIntervalSince1980:0]];
             zipInfo.tmz_date = [DDZippedFileInfo mzDateWithDate:fileDate];
+            //test
+//            id dtest = [DDZippedFileInfo dateWithMUDate:*((tm_unz*)&zipInfo.tmz_date)];
+//            uLong dt = [dtest timeIntervalSinceDate:[DDZippedFileInfo dateWithTimeIntervalSince1980:0]];
+//            uLong dt2 = ziplocal_TmzDateToDosDate(&zipInfo.tmz_date, dt);
+//            NSLog(@"%@: %u %u %u", fileDate, zipInfo.dosDate, dt, dt2);
 		}
 	}
 	
