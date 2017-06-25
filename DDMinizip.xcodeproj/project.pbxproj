@@ -13,14 +13,6 @@
 		B429BBD61594A4130061DADF /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = B429BBC71594A4130061DADF /* ioapi.c */; };
 		B429BBD71594A4130061DADF /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = B429BBC81594A4130061DADF /* ioapi.h */; };
 		B429BBD81594A4130061DADF /* ioapi.h in Headers */ = {isa = PBXBuildFile; fileRef = B429BBC81594A4130061DADF /* ioapi.h */; };
-		B429BBDD1594A4130061DADF /* miniunz.c in Sources */ = {isa = PBXBuildFile; fileRef = B429BBCB1594A4130061DADF /* miniunz.c */; };
-		B429BBDE1594A4130061DADF /* miniunz.c in Sources */ = {isa = PBXBuildFile; fileRef = B429BBCB1594A4130061DADF /* miniunz.c */; };
-		B429BBDF1594A4130061DADF /* minizip.c in Sources */ = {isa = PBXBuildFile; fileRef = B429BBCC1594A4130061DADF /* minizip.c */; };
-		B429BBE01594A4130061DADF /* minizip.c in Sources */ = {isa = PBXBuildFile; fileRef = B429BBCC1594A4130061DADF /* minizip.c */; };
-		B429BBE11594A4130061DADF /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = B429BBCD1594A4130061DADF /* mztools.c */; };
-		B429BBE21594A4130061DADF /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = B429BBCD1594A4130061DADF /* mztools.c */; };
-		B429BBE31594A4130061DADF /* mztools.h in Headers */ = {isa = PBXBuildFile; fileRef = B429BBCE1594A4130061DADF /* mztools.h */; };
-		B429BBE41594A4130061DADF /* mztools.h in Headers */ = {isa = PBXBuildFile; fileRef = B429BBCE1594A4130061DADF /* mztools.h */; };
 		B429BBE51594A4130061DADF /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = B429BBCF1594A4130061DADF /* unzip.c */; };
 		B429BBE61594A4130061DADF /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = B429BBCF1594A4130061DADF /* unzip.c */; };
 		B429BBE71594A4130061DADF /* unzip.h in Headers */ = {isa = PBXBuildFile; fileRef = B429BBD01594A4130061DADF /* unzip.h */; };
@@ -58,13 +50,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		37F1CC7C1EFFC3F100CCBCD4 /* ioapi_mem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ioapi_mem.h; sourceTree = "<group>"; };
+		37F1CC7D1EFFC3F100CCBCD4 /* minishared.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = minishared.h; sourceTree = "<group>"; };
+		37F1CC7E1EFFC3F100CCBCD4 /* ioapi_mem.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ioapi_mem.c; sourceTree = "<group>"; };
+		37F1CC7F1EFFC3F100CCBCD4 /* minishared.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = minishared.c; sourceTree = "<group>"; };
+		37F1CC801EFFC3F100CCBCD4 /* crypt.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = crypt.c; sourceTree = "<group>"; };
+		37F1CC811EFFC3F100CCBCD4 /* ioapi_buf.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = ioapi_buf.c; sourceTree = "<group>"; };
+		37F1CC821EFFC3F100CCBCD4 /* ioapi_buf.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ioapi_buf.h; sourceTree = "<group>"; };
 		B429BBC61594A4130061DADF /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
 		B429BBC71594A4130061DADF /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
 		B429BBC81594A4130061DADF /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
-		B429BBCB1594A4130061DADF /* miniunz.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = miniunz.c; sourceTree = "<group>"; };
-		B429BBCC1594A4130061DADF /* minizip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = minizip.c; sourceTree = "<group>"; };
-		B429BBCD1594A4130061DADF /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
-		B429BBCE1594A4130061DADF /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
 		B429BBCF1594A4130061DADF /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
 		B429BBD01594A4130061DADF /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
 		B429BBD11594A4130061DADF /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
@@ -114,7 +109,7 @@
 		0867D691FE84028FC02AAC07 /* libNews4 */ = {
 			isa = PBXGroup;
 			children = (
-				B429BBC51594A4130061DADF /* other */,
+				B429BBC51594A4130061DADF /* minizip */,
 				B4664B6C1580DE9F00AB7726 /* cli */,
 				B492A90A157BCD4200184979 /* src */,
 				B4664B671580DE7700AB7726 /* libDDMinizip-OSX.a */,
@@ -124,22 +119,25 @@
 			name = libNews4;
 			sourceTree = "<group>";
 		};
-		B429BBC51594A4130061DADF /* other */ = {
+		B429BBC51594A4130061DADF /* minizip */ = {
 			isa = PBXGroup;
 			children = (
+				37F1CC801EFFC3F100CCBCD4 /* crypt.c */,
 				B429BBC61594A4130061DADF /* crypt.h */,
+				37F1CC811EFFC3F100CCBCD4 /* ioapi_buf.c */,
+				37F1CC821EFFC3F100CCBCD4 /* ioapi_buf.h */,
+				37F1CC7E1EFFC3F100CCBCD4 /* ioapi_mem.c */,
+				37F1CC7C1EFFC3F100CCBCD4 /* ioapi_mem.h */,
 				B429BBC71594A4130061DADF /* ioapi.c */,
 				B429BBC81594A4130061DADF /* ioapi.h */,
-				B429BBCB1594A4130061DADF /* miniunz.c */,
-				B429BBCC1594A4130061DADF /* minizip.c */,
-				B429BBCD1594A4130061DADF /* mztools.c */,
-				B429BBCE1594A4130061DADF /* mztools.h */,
+				37F1CC7F1EFFC3F100CCBCD4 /* minishared.c */,
+				37F1CC7D1EFFC3F100CCBCD4 /* minishared.h */,
 				B429BBCF1594A4130061DADF /* unzip.c */,
 				B429BBD01594A4130061DADF /* unzip.h */,
 				B429BBD11594A4130061DADF /* zip.c */,
 				B429BBD21594A4130061DADF /* zip.h */,
 			);
-			path = other;
+			path = minizip;
 			sourceTree = "<group>";
 		};
 		B4664B521580DA0000AB7726 /* Frameworks */ = {
@@ -186,7 +184,6 @@
 				B4664B471580C70200AB7726 /* DDZippedFileInfo.h in Headers */,
 				B429BBD31594A4130061DADF /* crypt.h in Headers */,
 				B429BBD71594A4130061DADF /* ioapi.h in Headers */,
-				B429BBE31594A4130061DADF /* mztools.h in Headers */,
 				B429BBE71594A4130061DADF /* unzip.h in Headers */,
 				B429BBEB1594A4130061DADF /* zip.h in Headers */,
 			);
@@ -201,7 +198,6 @@
 				B4664B481580C70200AB7726 /* DDZippedFileInfo.h in Headers */,
 				B429BBD41594A4130061DADF /* crypt.h in Headers */,
 				B429BBD81594A4130061DADF /* ioapi.h in Headers */,
-				B429BBE41594A4130061DADF /* mztools.h in Headers */,
 				B429BBE81594A4130061DADF /* unzip.h in Headers */,
 				B429BBEC1594A4130061DADF /* zip.h in Headers */,
 			);
@@ -298,9 +294,6 @@
 				B492A92F157BCD4200184979 /* DDZipWriter.m in Sources */,
 				B4664B491580C70200AB7726 /* DDZippedFileInfo.m in Sources */,
 				B429BBD51594A4130061DADF /* ioapi.c in Sources */,
-				B429BBDD1594A4130061DADF /* miniunz.c in Sources */,
-				B429BBDF1594A4130061DADF /* minizip.c in Sources */,
-				B429BBE11594A4130061DADF /* mztools.c in Sources */,
 				B429BBE51594A4130061DADF /* unzip.c in Sources */,
 				B429BBE91594A4130061DADF /* zip.c in Sources */,
 			);
@@ -314,9 +307,6 @@
 				B492A930157BCD4200184979 /* DDZipWriter.m in Sources */,
 				B4664B4A1580C70200AB7726 /* DDZippedFileInfo.m in Sources */,
 				B429BBD61594A4130061DADF /* ioapi.c in Sources */,
-				B429BBDE1594A4130061DADF /* miniunz.c in Sources */,
-				B429BBE01594A4130061DADF /* minizip.c in Sources */,
-				B429BBE21594A4130061DADF /* mztools.c in Sources */,
 				B429BBE61594A4130061DADF /* unzip.c in Sources */,
 				B429BBEA1594A4130061DADF /* zip.c in Sources */,
 			);
@@ -344,16 +334,62 @@
 		1DEB922308733DC00010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = unix;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 			};
 			name = Debug;
 		};
 		1DEB922408733DC00010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = unix;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 			};
 			name = Release;
 		};
